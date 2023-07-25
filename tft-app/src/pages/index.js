@@ -5,9 +5,8 @@ import SearchBar from "@/components/searchBar";
 export default function Page() {
     return (
         <div>
-            <Header />
-            <SearchBar />
-            <Profile />
+            <Header/>
+            <SearchBar/>
             <h1>TFT APP</h1>
         </div>)
 }
