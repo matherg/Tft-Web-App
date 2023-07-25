@@ -7,7 +7,6 @@ export default function Page() {
         <div>
             <Header />
             <SearchBar />
-            <Profile />
             <h1>TFT APP</h1>
         </div>)
 }

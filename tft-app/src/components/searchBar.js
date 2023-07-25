@@ -1,24 +1,28 @@
 import axios from 'axios'
 import {useState} from "react";
-
+import Profile from "@/components/profile";
 
 
 const SearchBar = () => {
-
+    const [input, setInput] = useState("");
     const [playerName, setPlayerName] = useState("");
-    function playerGames(e) {
-        var APISearch = "http://localhost:4000/playerMatches";
-        axios.get(APISearch, {params: {username: playerName}}).then(function (response) {
-            console.log(response);
-        }).catch(function (error) {
-            console.log(error);
-        });}
+
+    if(playerName == ""){
     return (
     <div className="SearchBar">
         <h3> Search for Player</h3>
-        <input onChange={e => setPlayerName(e.target.value)}/>
-        <button onClick={e => playerGames(e)}>Search</button>
-    </div>)
+        <input onChange={e => setInput(e.target.value)}/>
+        <button onClick={e => setPlayerName(input)}>Search</button>
+        <h2> Playername is {playerName}</h2>
+    </div>)}
+    return (
+        <div className="SearchBar">
+            <h3> Search for Player</h3>
+            <input onChange={e => setInput(e.target.value)}/>
+            <button onClick={e => setPlayerName(input)}>Search</button>
+            <h2> Playername is {playerName}</h2>
+            <Profile player = {playerName}/>
+        </div>)
 };
 
 export default SearchBar;
