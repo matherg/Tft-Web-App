@@ -8,7 +8,6 @@ async function getPlayerPUUID(playerName) {
     var APISearch = "https://na1.api.riotgames.com/tft/summoner/v1/summoners/by-name/" + playerName + "?api_key=" +API_KEY;
 
     return axios.get(APISearch).then(response => {
-        console.log(response);
         return response.data.puuid;
     }).catch(err => console.log(err));
 }
@@ -42,7 +41,9 @@ app.get('/playerMatches', async (req, res) => {
     return matchData;
 })
 app.get('/playerPUUID', async (req, res) => {
-    return await getPlayerPUUID(req.query.username);
+    let puuid = await getPlayerPUUID(req.query.username)
+    console.log(puuid);
+    res.send(puuid);
 })
 
 app.listen(4000, function () {
